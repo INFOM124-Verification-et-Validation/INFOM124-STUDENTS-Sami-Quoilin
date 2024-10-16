@@ -5,6 +5,8 @@ import static org.assertj.core.api.Assertions.assertThat;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
+import java.util.List;
+
 /**
  * Test suite to confirm that {@link Unit}s correctly (de)occupy squares.
  *
@@ -32,7 +34,20 @@ class OccupantTest {
     @Test
     void noStartSquare() {
         // TODO
+        assertThat(!unit.hasSquare());
+
+        /*int width = board.getWidth();
+        int heigth = board.getHeigth();
+        for(int x; x < width; x++){
+            for(int y; y < heigth; y++){
+                Ground current_square = board.SquareAt(x, y);
+                List<Unit> occupants = current_square.getOccupants();
+                assertThat(occupents.Contains(unit));
+            }
+        }
+    */
     }
+
 
     /**
      * Tests that the unit indeed has the target square as its base after
