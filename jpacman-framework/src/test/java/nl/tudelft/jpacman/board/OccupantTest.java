@@ -33,7 +33,6 @@ class OccupantTest {
      */
     @Test
     void noStartSquare() {
-        // TODO
         assertThat(!unit.hasSquare());
 
         /*int width = board.getWidth();
@@ -56,6 +55,14 @@ class OccupantTest {
     @Test
     void testOccupy() {
         // TODO
+        BasicSquare square = new BasicSquare();
+        if(square.isAccessibleTo(unit)) {
+            unit.occupy(square);
+
+            // here we suposse that if the occupy method fails, the programm is interrupted
+            assertThat(unit.hasSquare() && square.getOccupants().contains(unit));
+        }
+
     }
 
     /**
