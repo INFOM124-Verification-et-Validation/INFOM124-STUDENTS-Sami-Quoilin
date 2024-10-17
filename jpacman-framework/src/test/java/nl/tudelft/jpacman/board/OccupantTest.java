@@ -5,7 +5,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-import java.util.List;
+import java.util.*;
 
 /**
  * Test suite to confirm that {@link Unit}s correctly (de)occupy squares.
@@ -72,5 +72,22 @@ class OccupantTest {
     @Test
     void testReoccupy() {
         // TODO
+        List <Unit> units = new ArrayList<Unit>();
+        Unit element = new BasicUnit();
+
+        units.add(element);
+        units.add(unit);
+
+        BasicSquare square = new BasicSquare();
+
+        if(square.isAccessibleTo(unit) && square.isAccessibleTo(element) ) {
+            units.get(0).occupy(square);
+            units.get(1).occupy(square); // unit occupy to the square
+
+            assertThat(unit.hasSquare() && square.getOccupants().contains(unit));
+        }
+
+
+
     }
 }
