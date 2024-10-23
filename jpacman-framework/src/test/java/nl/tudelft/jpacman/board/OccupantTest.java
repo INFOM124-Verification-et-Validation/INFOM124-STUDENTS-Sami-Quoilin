@@ -72,7 +72,7 @@ class OccupantTest {
     @Test
     void testReoccupy() {
         // TODO
-        List <Unit> units = new ArrayList<Unit>();
+        List <Unit> units = new ArrayList<>();
         Unit element = new BasicUnit();
 
         units.add(element);
