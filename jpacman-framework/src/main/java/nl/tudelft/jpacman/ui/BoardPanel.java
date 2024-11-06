@@ -68,6 +68,10 @@ class BoardPanel extends JPanel {
         Dimension window = getSize();
 
         // Renders the board on the given graphics context to the given dimensions
+        renderBoards(graphics, window, board);
+    }
+
+    private static void renderBoards(Graphics graphics, Dimension window, Board board) {
         int cellW = window.width / board.getWidth();
         int cellH = window.height / board.getHeight();
 
@@ -79,12 +83,16 @@ class BoardPanel extends JPanel {
                 int cellX = x * cellW;
                 int cellY = y * cellH;
                 Square square = board.squareAt(x, y);
-                // Renders a single square on the given graphics context on the specified rectangle
-                square.getSprite().draw(graphics, cellX, cellY, cellW, cellH);
-                for (Unit unit : square.getOccupants()) {
-                    unit.getSprite().draw(graphics, cellX, cellY, cellW, cellH);
-                }
+                renderSquare(graphics, square, cellX, cellY, cellW, cellH);
             }
+        }
+    }
+
+    private static void renderSquare(Graphics graphics, Square square, int cellX, int cellY, int cellW, int cellH) {
+        // Renders a single square on the given graphics context on the specified rectangle
+        square.getSprite().draw(graphics, cellX, cellY, cellW, cellH);
+        for (Unit unit : square.getOccupants()) {
+            unit.getSprite().draw(graphics, cellX, cellY, cellW, cellH);
         }
     }
 }
